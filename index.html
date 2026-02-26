@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hutao.love</title>
-    <link rel="stylesheet" href="zhuye.css">
-    <link rel="icon" type="imge/x-icon" href="https://i.postimg.cc/P58nMvsQ/wang-biao.png">
-    <script src="snowflake.js"></script>
+    <link rel="icon" href="https://i.postimg.cc/P58nMvsQ/wang-biao.png">
+    <title>个人中心页面</title>
     <style>
+        /* 全局重置 */
         * {
             margin: 0;
             padding: 0;
@@ -19,356 +18,320 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url("https://i.postimg.cc/TPqcm4zm/hu-tao55.jpg");
+            font-family: "./朱雀仿宋.ttf";
+            overflow-x: hidden;
+        }
+
+        /* 背景层 */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://i.postimg.cc/TPqcm4zm/hu-tao55.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 20px;
-            position: relative;
         }
 
-        .content {
-            text-align: center;
-            color: white;
-            z-index: 1;
+        /* 背景遮罩层 */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 800px;
-        }
-        
-        .tp-bk {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            height: 100%;
+            z-index: -1;
         }
 
-        .tp {
+        /* 主内容容器 */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* 头像区域容器 */
+        .avatar-group {
             position: relative;
+            width: 220px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* 渐变旋转圈 */
+        .rotating-ring {
+            position: absolute;
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-image: url(https://i.postimg.cc/J7FF3BP5/8.jpg);
-            background-size: cover;
-            background-position: center;
-            margin: 0 auto;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            z-index: 2;
-        }
-        
-        .tp-border {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .tp-border::before {
-            content: '';
-            position: absolute;
-            width: 205%;
-            height: 205%;
             background: conic-gradient(
-                transparent, transparent, transparent, transparent,
-                #e0f0e9,
+               #e0f0e9,
                 #cca4e3,
                 #e0c3fc,
                 #f173ac
             );
-            top: -50%;
-            left: -50%;
-            animation: rotate 3s linear infinite;
-            z-index: 2;
+            z-index: 1;
+            animation: spin 3s linear infinite;
         }
-        
-        .tp-border::after {
-            content: '';
-            position: absolute;
-            inset: 5px;
-            background: rgba(0, 0, 0, 0.8);
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* .tx 头像区域 */
+        .tx {
+            position: relative;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
             z-index: 2;
+            background-image: url('https://i.postimg.cc/J7FF3BP5/8.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .tx:hover {
+            background-image: url('https://i.postimg.cc/1t4BGFW3/ht.gif');
+            transform: scale(1.1);
+            border: 3px solid #f173ac;
         }
         
-        .tp:hover {
-            transform: scale(1.2);
-            transition: transform 0.3s ease;
-            border: 5px solid pink;
-            background-image: url("https://i.postimg.cc/1t4BGFW3/ht.gif");
+        .wenzi{
+          margin-bottom: 30px;
         }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .p1 {
+       .p1 {
             font-size: 1.5em;
             margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-family: "FZShuTi";
             padding: 0 10px;
+            color: #fff;
         }
-
         .p2 {
             font-size: 1.5em;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-family: "kaiti";
             padding: 0 10px;
-        }
-        
-        .link {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 15px auto 0;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 0 10px;
-        }
-        
-        .link > .tooltip {
-            width: 60px;
-            height: 40px;
-            font-size: 16px;
-            padding: 8px 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px;
-        }
-        
-        .link > .tooltip:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border: 3px solid pink;
-            transform: translateY(-4px);
-            cursor: pointer;
-        }
-        
-        .link a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            padding: 10px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            font-family: "宋体";
-            margin: 5px 8px;
-            white-space: nowrap;
             text-align: center;
+            color: #fff;
         }
 
-        .link a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border: 3px solid pink;
-            transform: translateY(-4px);
+        /* 网格布局区域 - 默认移动端 */
+        .grid-layout {
+            display: grid;
+            /* 移动端：两列 */
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 60%;
+            /* 默认拉伸子元素高度，保证移动端按钮高度一致 */
+            align-items: stretch; 
         }
-        
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-        
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 180px;
-            background-color: rgb(243, 137, 155);
-            color: #fff;
+
+        /* 链接样式 */
+        .grid-item {
+            display: flex; /* 使用flex使内容更容易居中 */
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
             text-align: center;
-            border-radius: 6px;
-            padding: 6px 0;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "kaiti";
+            border: 1px solid #fff;
+        }
+
+        /* a 元素 - 移动端占两栏 */
+        .grid-item.item-main {
+            grid-column: 1 / -1;
+            padding: 18px 25px;
+            font-size: 1.2rem;
+        }
+
+        /* span 容器 */
+        .tooltip-wrapper.span-one,
+        .tooltip-wrapper.span-two {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* 让内部的按钮撑满容器高度 */
+            width: 100%;
+        }
+
+        /* span 内的按钮 */
+        .tooltip-wrapper .grid-item {
+            width: 100%;
+        }
+
+        /* 浮动效果 */
+        .grid-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .item-main:hover {
+            border: 2px solid #f173ac;
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .tooltip-wrapper.span-one:hover .grid-item {
+            transform: translateY(-8px);
+            border: 2px solid #f173ac;
+        }
+
+        .tooltip-wrapper.span-two:hover .grid-item {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* 提示框 */
+        .tooltip-wrapper {
+            position: relative;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
             position: absolute;
-            z-index: 1;
-            bottom: -40px;
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-family: "宋体";
-            font-size: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background-color: bisque;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 100;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
-        
-        .tooltip:hover .tooltiptext {
+
+        .tooltip-text::after {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: pink transparent transparent transparent;
+        }
+
+        .tooltip-wrapper:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
-        
-        .tooltip .tooltiptext::after {
-            content: "";
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: transparent transparent rgb(243, 137, 155) transparent;
+
+        .tooltip-wrapper.span-one .tooltip-text,
+        .tooltip-wrapper.span-two .tooltip-text {
+            background-color: pink;
         }
-        
-        /* 媒体查询：针对小屏幕设备 */
-        @media screen and (max-width: 768px) {
-            .tp-bk {
-                width: 100px;
-                height: 100px;
+        .tooltip-wrapper.span-one .tooltip-text::after,
+        .tooltip-wrapper.span-two .tooltip-text::after {
+            border-color: pink transparent transparent transparent;
+        }
+
+        /* PC端布局调整 (宽度大于768px) */
+        @media (min-width: 769px) {
+            .grid-layout {
+                /* 改为三列 */
+                grid-template-columns: auto 1fr auto;
+                width: 100%; 
+                gap: 20px;
+                /* PC端改为垂直居中，不再强制拉伸高度 */
+                align-items: center; 
             }
             
-            .tp {
-                width: 100px;
-                height: 100px;
+            /* a 标签样式调整 */
+            .grid-item.item-main {
+                grid-column: auto; /* 取消占满两行 */
+                order: 2; /* 排序：中间 */
+                white-space: nowrap;
+                
+                /* --- 关键修改：统一高度样式 --- */
+                font-size: 14px;       /* 统一字号 */
+                padding: 15px 25px;    /* 统一上下padding，使高度一致 */
+                /* -------------------------- */
             }
-            
-            .tp-border {
-                width: 110px;
-                height: 110px;
-            }
-            
-            .p1 {
-                font-size: 1.3em;
-            }
-            
-            .p2 {
-                font-size: 1.3em;
-            }
-            
-            .link {
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .link a {
-                font-size: 14px;
-                padding: 8px 14px;
-                margin: 5px;
+
+            /* span-one 排序：左边 */
+            .tooltip-wrapper.span-one {
                 order: 1;
-                width: 80%;
-                max-width: 280px;
+            }
+
+            /* span-two 排序：右边 */
+            .tooltip-wrapper.span-two {
+                order: 3;
             }
             
-            .link > .tooltip {
-                order: 0;
-                width: 50px;
-                height: 35px;
-                padding: 6px 12px;
-                font-size: 14px;
-            }
-            
-            .tooltip .tooltiptext {
-                width: 150px;
-                font-size: 11px;
-                bottom: -35px;
+            /* PC端 span 容器内部的按钮样式重置 */
+            .tooltip-wrapper .grid-item {
+                padding: 15px 20px; /* 保持与a标签相同的上下padding */
             }
         }
-        
-        /* 媒体查询：针对超小屏幕设备（手机竖屏） */
-        @media screen and (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .tp-bk {
-                width: 90px;
-                height: 90px;
-                margin-bottom: 12px;
-            }
-            
-            .tp {
-                width: 90px;
-                height: 90px;
-            }
-            
-            .tp-border {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .p1 {
-                font-size: 1.2em;
-                line-height: 1.3;
-            }
-            
-            .p2 {
-                font-size: 1.2em;
-                line-height: 1.3;
-            }
-            
-            .link {
-                flex-direction: row;
-                margin-top: 12px;
-            }
-            
-            .link a {
-                font-size: 13px;
-                padding: 7px 12px;
-                width: 85%;
-                max-width: 250px;
-                margin: 8px auto;
-            }
-            
-            .link > .tooltip {
-                width: 45px;
-                height: 32px;
-                padding: 5px 10px;
-                font-size: 13px;
-            }
-            
-            .tooltip .tooltiptext {
-                width: 130px;
-                font-size: 10px;
-                bottom: -32px;
-            }
+
+        /* 响应式调整 - 移动端 */
+        @media (max-width: 480px) {
+            .content-wrapper { padding: 15px; }
+            .avatar-group { width: 180px; height: 180px; margin-bottom: 25px; }
+            .rotating-ring { width: 170px; height: 170px; }
+            .tx { width: 160px; height: 160px; }
+            .grid-layout { gap: 12px; }
+            .grid-item { padding: 12px 15px; font-size: 13px; }
+            .item-main { padding: 15px 20px; font-size: 14px; }
         }
-        
-        /* 媒体查询：针对横屏手机 */
-        @media screen and (max-width: 768px) and (orientation: landscape) {
-            .content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                min-height: 100vh;
-            }
-            
-            .tp-bk {
-                margin-bottom: 10px;
-            }
-            
-            .link {
-                margin-top: 10px;
-            }
+
+        /* 平板尺寸 */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .content-wrapper { max-width: 450px; }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <div class="tp-bk">
-            <div class="tp-border"></div>
-            <div class="tp"></div>
+    <!-- 背景层 -->
+    <div class="bg-layer"></div>
+
+    <!-- 主内容区域 -->
+    <main class="content-wrapper">
+        <!-- 头像区域 -->
+        <div class="avatar-group">
+            <div class="rotating-ring"></div>
+            <div class="tx"></div>
         </div>
-        <p class="p1">Welcome to YuQi's Home</p>
-        <p class="p2">欢迎来到雨祁的小窝</p>
-        <div class="link">
-            <span class="tooltip" id="span-one">❤️
-                <span class="tooltiptext">谢谢你，我真的很想你</span>
-            </span>
-            <a href="https://yqamm.eu.cc/">进入雨祁的空间</a>
-            <span class="tooltip" id="span-two">❤️
-                <span class="tooltiptext">对不起，但我不喜欢你</span>
-            </span>
+        <div class="wenzi">
+           <p class="p1">Welcome to YuQi's Home</p>
+           <p class="p2">欢迎来到雨祁的小窝</p>
         </div>
-    </div>
+
+        <!-- 网格布局区域 -->
+        <div class="grid-layout">
+            <a href="https://yqamm.eu.cc" class="grid-item item-main">进入雨祁的小窝</a>
+            <div class="tooltip-wrapper span-one">
+                <span class="grid-item">❤️</span>
+                <span class="tooltip-text">谢谢你，我真的很想你</span>
+            </div>
+            <div class="tooltip-wrapper span-two">
+                <span class="grid-item">❤️</span>
+                <span class="tooltip-text">对不起，但我不喜欢你</span>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>

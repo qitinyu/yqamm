@@ -12,9 +12,9 @@
         /* --- 全局重置与基础样式 --- */
         @font-face {
             font-family: '朱雀仿宋';
-            src: url('./朱雀仿宋.ttf') format('woff2'),
-                 url('./朱雀仿宋.woff') format('woff'),
-                 url('./朱雀仿宋.woff') format('truetype');
+            src: url('./zqfs.woff2') format('woff2'),
+                url('./zqfs.woff2') format('woff'),
+                url('./zqfs.woff2') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -245,8 +245,21 @@
         }
 
         .jianjie p {
-            color: #666;
+
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            background-image: linear-gradient(to right, yellow, pink);
+            background-size: 0px 2px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+           
         }
+        .jianjie p:hover {
+             background-size: 100% 2px;
+             transition:2s;
+        }
+
 
         /* --- 3. 项目区域 --- */
         .project {
@@ -416,9 +429,11 @@
             <h2>"生命绚烂，别被黑暗压垮。"</h2>
             <div class="social-links">
                 <a href="https://github.com/qitinyu" title="Github"><i class="fa-brands fa-github-alt"></i></a>
-                <a href="https://www.miyoushe.com/sr/accountCenter/postList?id=227165994" title="米游社"><i class="fa-brands fa-battle-net"></i></a>
+                <a href="https://www.miyoushe.com/sr/accountCenter/postList?id=227165994" title="米游社"><i
+                        class="fa-brands fa-battle-net"></i></a>
                 <a href="https://space.bilibili.com/3461582895974946" title="B站"><i class="fab fa-bilibili"></i></a>
-                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=-A9MUAbpO68zcu1YAp11NiI3ir7WczLO" title="QQ"><i class="fa-brands fa-qq"></i></a>
+                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=-A9MUAbpO68zcu1YAp11NiI3ir7WczLO" title="QQ"><i
+                        class="fa-brands fa-qq"></i></a>
             </div>
         </aside>
 
@@ -445,9 +460,9 @@
             <!-- 个人简介 -->
             <section class="jianjie">
                 <h3>关于我</h3>
-                <p>你好，这里是雨祁，欢迎来到我的个人主页。</br>
-                    在这个快节奏的数字时代，我依然钟情于搭建属于自己的独立小站。</br>
-                    这里记录着我的代码、思考以及对美好事物的捕捉</p>
+                <p>你好，欢迎来到我的个人主页。</br></p>
+                    <p>这个世界五彩斑斓，而我依旧想要一个安静简约的地方存放躁动的心灵。</br></p>
+                    <p>这里存放的，不仅是我的思考，还有对美好生活的向往.</p>
             </section>
 
             <!-- 项目展示标题 -->
@@ -459,7 +474,9 @@
                     <h1>雨祁小窝</h1>
                     <span>基于Astro-Mizuki的现代化个人博客</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://yqamm.eu.cc" target="_blank"><p>点击预览</p></a></div>
+                        <div class="yulan"><a href="https://yqamm.eu.cc" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
                         <a href="https://github.com/qitinyu/yuqi/" class="github-link"><i class="fab fa-github"></i></a>
                     </div>
                 </article>
@@ -467,31 +484,42 @@
                     <h1>胡桃-手风琴</h1>
                     <span>HTML+CSS+JS 制作的简易网页</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://qitinyu.github.io/hutao-sfq/" target="_blank"><p>点击预览</p></a></div>
-                        <a href="https://github.com/qitinyu/hutao-sfq" class="github-link"><i class="fab fa-github"></i></a>
+                        <div class="yulan"><a href="https://qitinyu.github.io/hutao-sfq/" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
+                        <a href="https://github.com/qitinyu/hutao-sfq" class="github-link"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </article>
                 <article class="card">
                     <h1>雨祁-导航</h1>
                     <span>HTML+CSS+JS 制作的网页导航</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://qitinyu.github.io/YQ-nav/" target="_blank"><p>点击预览</p></a></div>
-                        <a href="https://github.com/qitinyu/YQ-nav" class="github-link"><i class="fab fa-github"></i></a>
+                        <div class="yulan"><a href="https://qitinyu.github.io/YQ-nav/" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
+                        <a href="https://github.com/qitinyu/YQ-nav" class="github-link"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </article>
                 <article class="card">
                     <h1>提瓦特简介</h1>
                     <span>HTML+CSS+JS 制作的对于提瓦特大陆的简介</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://qitinyu.github.io/yq-twt/" target="_blank"><p>点击预览</p></a></div>
-                        <a href="https://github.com/qitinyu/yq-twt" class="github-link"><i class="fab fa-github"></i></a>
+                        <div class="yulan"><a href="https://qitinyu.github.io/yq-twt/" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
+                        <a href="https://github.com/qitinyu/yq-twt" class="github-link"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </article>
                 <article class="card">
                     <h1>雨祁-网页练习</h1>
                     <span>HTML+CSS+JS 制作的较完整网页练习</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://qitinyu.github.io/yq-wz/" target="_blank"><p>点击预览</p></a></div>
+                        <div class="yulan"><a href="https://qitinyu.github.io/yq-wz/" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
                         <a href="https://github.com/qitinyu/yq-wz" class="github-link"><i class="fab fa-github"></i></a>
                     </div>
                 </article>
@@ -499,8 +527,11 @@
                     <h1>雨祁-自学练习</h1>
                     <span>HTML+CSS+JS 制作的自学练习</span>
                     <div class="card-bottom">
-                        <div class="yulan"><a href="https://qitinyu.github.io/hutao-J/" target="_blank"><p>点击预览</p></a></div>
-                        <a href="https://github.com/qitinyu/hutao-J" class="github-link"><i class="fab fa-github"></i></a>
+                        <div class="yulan"><a href="https://qitinyu.github.io/hutao-J/" target="_blank">
+                                <p>点击预览</p>
+                            </a></div>
+                        <a href="https://github.com/qitinyu/hutao-J" class="github-link"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </article>
             </section>
